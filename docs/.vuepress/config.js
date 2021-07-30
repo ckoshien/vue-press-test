@@ -1,3 +1,3 @@
 module.exports = {
-    plugins: [[require('../../plugin.ts')]]
+    plugins: [[require('../../plugin.js')]]
   }

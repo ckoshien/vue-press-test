@@ -1,11 +1,8 @@
-import { MarkdownIt } from 'markdown-it';
-import * as MarkdownItVideo from "markdown-it-video";
-
-var md = new MarkdownIt({
+var md = require('markdown-it')({
   html: true,
   linkify: true,
   typography: true
-}).use(MarkdownItVideo, 
+}).use(require('markdown-it-video'), 
 {
   youtube: { width: 640, height: 390 },
   vimeo: { width: 500, height: 281 },
@@ -13,7 +10,7 @@ var md = new MarkdownIt({
   prezi: { width: 550, height: 400 }
 })
 
-module.exports = (options={}, context:any) => ({
+module.exports = (options={}, context) => ({
   define(){
     return KifViewerPlugin(md)
   }
@@ -21,7 +18,7 @@ module.exports = (options={}, context:any) => ({
 const EMBED_REGEX = /@\[([kif].+)]\([\s]*(.*?)[\s]*[)]/im;
 
 function kifViewerEmbed(md) {
-  return md.replaceAll('href=', 'src=')
+  //return md.replace('href=', 'src=')
   //return kifViewerReturn;
 }
 
